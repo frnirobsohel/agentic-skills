@@ -82,7 +82,7 @@ triggers:
 - **Be concise** — agents already know general concepts; add only non-obvious, high-signal rules.
 - **Modular references** — keep `SKILL.md` under ~100 lines; move deep content to `references/`.
 - **Actionable checklists** — prefer tables and checkboxes over prose.
-- **Portable paths** — use relative links (`references/foo.md`), never absolute `file:///` URLs.
+- **Portable paths** — use relative links (`references/foo.md`); never use absolute local file URLs.
 - **No time-sensitive hacks** — avoid "before August 2025" style notes; use versioned sections instead.
 
 ### Updating the Router
