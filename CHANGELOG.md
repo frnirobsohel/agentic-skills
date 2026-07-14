@@ -32,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Pull request template
 
 ### Changed
-- `AGENTS.md` — replaced hardcoded absolute local file URLs with portable relative links; added multi-platform setup table and validation section
+- `AGENTS.md` — replaced hardcoded `file:///` paths with portable relative links; added multi-platform setup table and validation section
 - `README.md` — expanded setup guide for all major AI coding assistants; linked to CONTRIBUTING, CHANGELOG, and docs
 - `skills/uiux/SKILL.md` and `skills/frontend/SKILL.md` — added `version` field to YAML frontmatter
 
