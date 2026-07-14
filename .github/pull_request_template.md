@@ -26,7 +26,7 @@
 - [ ] `node scripts/run_eval.js` passes locally
 - [ ] `CHANGELOG.md` updated (if user-facing)
 - [ ] `AGENTS.md` router table updated (if triggers changed)
-- [ ] No absolute `file:///` paths introduced
+- [ ] No absolute `file://` paths introduced
 
 ## Test plan
 
