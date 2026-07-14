@@ -57,22 +57,60 @@ Every skill should reflect the thinking process of a senior expert, helping an A
 *The objective is for the AI to behave like an experienced specialist — not just generate text.*
 
 ### 5. Clear Repository Structure
-The repository should stay simple, scalable, and easy to navigate for both humans and AI:
+The repository must remain structured, scalable, and predictable for both human contributors and AI agents. Every top-level file and folder serves a permanent, specific purpose in the AI agent lifecycle:
 
 ```
 agentic-skills/
-├── AGENTS.md
+├── LICENSE                # Apache 2.0 open-source license
+├── README.md              # Project overview, demo showcase, and quick setup guide
+├── CHANGELOG.md           # Version history and release notes (`[Unreleased]` required)
+├── CONTRIBUTING.md        # Contribution guidelines and skill authoring standards
+├── AGENTS.md              # Primary AI Agent Router & Manifest (entrypoint for agents)
+├── ecommerce-buttons.html # Live demo: 10 pure HTML/CSS e-commerce button styles
+├── preview.png            # Visual preview screenshot for README demo
+├── .github/
+│   ├── workflows/         # CI validation workflows (validate-skills.yml)
+│   └── ISSUE_TEMPLATE/    # Bug report, feature request, and new skill proposal templates
+├── docs/
+│   ├── PHILOSOPHY.md      # Core design principles, Vision, and contributor philosophy
+│   └── SETUP.md           # Multi-platform agent setup (Cursor, Claude, Gemini, Copilot)
+├── eval/
+│   └── cases.json         # Keyword routing evaluation test suite (12+ cases)
+├── scripts/
+│   ├── validate_skills.js # Automated structure, frontmatter, and link integrity validation
+│   └── run_eval.js        # Automated keyword routing evaluation runner
 └── skills/
-    ├── uiux/
     ├── frontend/
-    ├── backend/
-    ├── devops/
-    └── ...
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- Frontend starter templates (React, Next.js, Vitest)
+    └── uiux/
+        ├── SKILL.md
+        ├── references/
+        └── templates/     <-- UI/UX audit & specification templates
 ```
 
-Each skill folder should contain predictable modules:
+#### 📌 Permanent Top-Level Components & Their Roles:
+- **Core Documentation (`README.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, `LICENSE`):** Ensures clear communication, versioning transparency, and standardized contributor onboarding.
+- **Agent Router (`AGENTS.md`):** The master routing table that every AI tool reads first to discover and trigger domain skills dynamically.
+- **Demo & Verification (`ecommerce-buttons.html`, `preview.png`):** Tangible proof of the repository's output quality (pure HTML/CSS production-grade generation).
+- **Setup & Philosophy (`docs/`):** Contains `PHILOSOPHY.md` (the core vision and rules) and `SETUP.md` (step-by-step guides across all IDEs).
+- **Quality & Evaluation (`scripts/`, `eval/`, `.github/`):** Automated CI checks (`validate_skills.js` and `run_eval.js`) that run on every push and pull request to guarantee zero broken links or invalid triggers.
+- **Domain Skills (`skills/`):** The modular skill containers (`uiux/`, `frontend/`, etc.). To align with AI/LLM agent architecture and prompt execution, **every skill maintains separate, modular subdirectories (`templates/` and `resources/`) within its own folder (`skills/<skill_name>/`)**.
+
+Each skill folder should contain predictable, self-contained modules:
 - `SKILL.md` (Main router & high-signal rules)
 - `references/` (Deep-dive docs, architecture, checklists, design tokens, etc.)
+- `templates/` (Skill-specific starter boilerplates, code scaffolds, and markdown structures)
+- `resources/` (Supporting scripts, assets, or reference datasets specific to the skill)
+
+#### 🏆 Why Separate Per-Skill `templates/` Folders are Superior for AI Agents:
+1. **Locality of Reference:** When an AI agent triggers a skill (`skills/<skill_name>/SKILL.md`), relative references like `./templates/component.tsx.template` resolve instantly within the local skill context without searching across global repository structures.
+2. **Token Efficiency & Anti-Hallucination:** Loading only the active skill's templates prevents context window bloat, reduces token overhead, and eliminates hallucination caused by unrelated global templates.
+3. **Modularity & Portability:** Self-contained skill folders (`skills/<skill_name>/`) can be copied or shared cleanly across different workspaces, AI IDEs, or repositories without breaking external template dependencies.
+4. **Naming Collision Prevention:** Prevents conflicting filenames (e.g., `page.tsx.template` or `config.template`) across different technical domains like Next.js, React Native, or FastAPI.
+
+> **Note on Global Templates:** A repository-level `/templates` or `/.github/ISSUE_TEMPLATE` folder should **only** exist for project-wide repository maintenance (e.g., Pull Request templates, Issue templates, or standard contributor configs).
 
 ### 6. Token Efficiency
 A great skill isn't the longest — it's the most effective. It delivers:

@@ -1,0 +1,65 @@
+import React, { Suspense } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "[Page Title] | [App Name]",
+  description: "[SEO-friendly description outlining the purpose of this page]",
+};
+
+interface PageProps {
+  params: Promise<{ [key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+/**
+ * Next.js 15 App Router Server Component Boilerplate
+ * Follows RSC standards (`use client` only at leaf nodes) and strict TypeScript.
+ */
+export default async function Page({ params, searchParams }: PageProps) {
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100 px-4 py-8 md:px-8 max-w-7xl mx-auto">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+          [Page Heading]
+        </h1>
+        <p className="mt-2 text-slate-400">
+          [Subheading or concise contextual explanation]
+        </p>
+      </header>
+
+      <section aria-label="Main Content" className="space-y-6">
+        <Suspense fallback={<PageSkeleton />}>
+          <AsyncContentSection params={resolvedParams} query={resolvedSearchParams} />
+        </Suspense>
+      </section>
+    </main>
+  );
+}
+
+async function AsyncContentSection({
+  params,
+  query,
+}: {
+  params: { [key: string]: string };
+  query: { [key: string]: string | string[] | undefined };
+}) {
+  // Perform async data fetching here without waterfalls
+  return (
+    <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6 shadow-sm">
+      <p className="text-sm text-slate-300">
+        Content ready. Parameters: {JSON.stringify(params)}
+      </p>
+    </div>
+  );
+}
+
+function PageSkeleton() {
+  return (
+    <div className="animate-pulse rounded-xl border border-slate-800/60 bg-slate-900/30 p-6 h-48 flex items-center justify-center">
+      <span className="text-xs text-slate-500">Loading content...</span>
+    </div>
+  );
+}

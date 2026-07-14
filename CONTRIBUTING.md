@@ -50,9 +50,11 @@ CI must pass before a PR can be merged.
 ```
 skills/<skill-name>/
 ├── SKILL.md              # Required — router + playbook
-└── references/           # Recommended — modular deep-dive docs
-    ├── README.md         # Index of all reference files
-    └── *.md
+├── references/           # Recommended — modular deep-dive docs
+│   ├── README.md         # Index of all reference files
+│   └── *.md
+├── templates/            # Recommended — skill-specific starter/response templates
+└── resources/            # Optional — supporting assets, scripts, or datasets
 ```
 
 ### SKILL.md Frontmatter

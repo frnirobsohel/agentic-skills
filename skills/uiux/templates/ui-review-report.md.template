@@ -1,0 +1,41 @@
+# UI Review: [Component/Page Name]
+
+## Summary
+- **Product**: [Product name and type]
+- **Screen reviewed**: [Page or component]
+- **Review scope**: [Usability | Accessibility | Visual | All]
+
+## Findings
+
+### 🔴 Critical (Must Fix Before Launch)
+1. **[Issue title]**
+   - Where: [exact location]
+   - Problem: [what's wrong and why it matters]
+   - Impact: [who is affected and how]
+   - Fix: [specific actionable solution]
+   - Reference: [cite WCAG AA standard, heuristic, or design token]
+
+### 🟠 High (Fix Soon)
+1. **[Issue title]**
+   - Where: [exact location]
+   - Problem: [description]
+   - Fix: [actionable solution]
+
+### 🟡 Medium (Improvement)
+1. **[Issue title]**
+   - Where: [exact location]
+   - Problem: [description]
+   - Fix: [actionable solution]
+
+### 🟢 Low (Polish)
+1. **[Issue title]**
+   - Where: [exact location]
+   - Fix: [actionable polish recommendation]
+
+## What's Working Well ✅
+- [Pattern or element that is correctly implemented and aligns with design tokens/heuristics]
+
+## Recommended Next Steps
+1. [First priority action]
+2. [Second priority action]
+3. [Third priority action]

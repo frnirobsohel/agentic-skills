@@ -1,0 +1,26 @@
+# Design Brief: [Page/Flow Name]
+
+## Context
+- **Product**: [Product name]
+- **Primary User Persona**: [Target audience description]
+- **User Goal**: [What the user wants to accomplish]
+- **Business Goal**: [What the product/business aims to achieve]
+- **Success Metric**: [E.g., conversion rate, task completion rate, time to complete]
+
+## Information Hierarchy & Content Priority
+1. **Above the fold**: [Primary value proposition & key CTA]
+2. **Secondary area**: [Supporting context, features, or data visualization]
+3. **Tertiary area**: [Supporting links, FAQs, or supplementary actions]
+
+## Required States to Design
+- [ ] Default / Populated State
+- [ ] Empty State (First-time user or zero data)
+- [ ] Loading State (Skeleton layout or spinners)
+- [ ] Error State (Network failure, validation error, 404/500)
+- [ ] Success State (Confirmation or next action prompt)
+- [ ] Responsive Layouts (Mobile `<640px`, Tablet `768px`, Desktop `1280px+`)
+- [ ] Dark Mode Theme Variant
+
+## Accessibility & Performance Targets
+- **WCAG Level**: AA Minimum (Contrast ratio $\ge$ 4.5:1, touch targets $\ge$ 44px)
+- **Web Vitals**: LCP $< 2.5\text{s}$, CLS $< 0.1$

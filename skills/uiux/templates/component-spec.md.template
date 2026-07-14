@@ -1,0 +1,49 @@
+# Component Spec: [Component Name]
+
+## Purpose
+[One sentence: what this component does and when to use it.]
+
+## Variants
+
+| Variant | Description | Use Case |
+|---|---|---|
+| Primary | [description] | [when to use] |
+| Secondary | [description] | [when to use] |
+| Ghost | [description] | [when to use] |
+| Destructive | [description] | [when to use] |
+
+## Sizes
+
+| Size | Height | Font Size | Padding | Use Case |
+|---|---|---|---|---|
+| sm | 32px | 14px | 8px 12px | Dense UIs, tables |
+| md | 40px | 14px | 10px 16px | Default |
+| lg | 48px | 16px | 12px 20px | Hero CTAs, mobile primary |
+
+## States
+
+| State | Visual Change | Trigger |
+|---|---|---|
+| Default | [describe resting state] | Resting |
+| Hover | [describe visual change] | Mouse over (desktop) |
+| Active/Pressed | [describe visual change] | Mouse down / tap |
+| Focus | [2px solid focus ring, offset 2px] | Keyboard Tab |
+| Disabled | opacity 0.5, cursor not-allowed | Condition met |
+| Loading | spinner + disabled state | Async action |
+| Error | [describe visual error state] | Validation failure |
+
+## Accessibility Requirements
+- [ ] Role: `button` / `region` / `dialog` (semantic HTML element preferred)
+- [ ] Keyboard interaction: Enter and Space activate element
+- [ ] Visible focus indicator meets WCAG AA 4.5:1 contrast
+- [ ] Touch target at least 44×44pt (iOS) / 48×48dp (Android)
+- [ ] `aria-label` / `aria-labelledby` present if icon-only or custom widget
+
+## Design Tokens Used
+
+| Property | Token | Value |
+|---|---|---|
+| Background | `--color-action-primary` | `#4F46E5` |
+| Text | `--color-action-primary-text` | `#FFFFFF` |
+| Border radius | `--btn-radius` | `8px` |
+| Transition | `--duration-short` | `200ms` |

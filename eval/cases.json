@@ -68,16 +68,16 @@
     {
       "id": "templates-001",
       "prompt": "Create a component specification for an accessible modal",
-      "expected_skill": "templates",
+      "expected_skill": "uiux",
       "expected_keywords_hit": ["component spec"],
-      "expected_references": ["references/response-templates.md"]
+      "expected_references": ["templates/component-spec.md.template"]
     },
     {
       "id": "templates-002",
       "prompt": "Conduct a UI review and audit report for this cart page",
-      "expected_skill": "templates",
+      "expected_skill": "uiux",
       "expected_keywords_hit": ["ui review", "audit report"],
-      "expected_references": ["references/response-templates.md"]
+      "expected_references": ["templates/ui-review-report.md.template"]
     },
     {
       "id": "negative-001",

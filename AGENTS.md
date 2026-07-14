@@ -22,9 +22,8 @@ When you receive a user request, you **MUST** follow this routing procedure befo
 
 | 🛠️ Skill Name | 📦 Version | 📂 Category | 🎯 Primary Goal | ⚡ Active Triggers | 📄 Location |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **UI/UX Production Playbook** | `1.0.0` | `UI/UX Design` | High-fidelity UI/UX design audits, layout consistency, and brand identity | `ui`, `ux`, `redesign`, `dashboard`, `accessibility`, `landing page`, `theme`, `dark mode`, `spacing`, `component library`, `usability`, `color system`, `figma`, `design tokens` | [skills/uiux/SKILL.md](skills/uiux/SKILL.md) |
+| **UI/UX Production Playbook** | `1.0.0` | `UI/UX Design` | High-fidelity UI/UX design audits, layout consistency, and brand identity | `ui`, `ux`, `redesign`, `dashboard`, `accessibility`, `landing page`, `theme`, `dark mode`, `spacing`, `component library`, `usability`, `color system`, `figma`, `design tokens`, `audit report`, `ui review`, `component spec`, `component specification`, `design brief`, `copy sheet` | [skills/uiux/SKILL.md](skills/uiux/SKILL.md) |
 | **Frontend Production Playbook** | `1.0.0` | `Frontend` | High-performance React/Next.js development, state management, and modern styling | `frontend`, `react`, `next.js`, `tailwind`, `css`, `html`, `javascript`, `typescript`, `web app`, `client-side` | [skills/frontend/SKILL.md](skills/frontend/SKILL.md) |
-| **Response Format Playbook** | `1.0.0` | `Documentation` | Structured Markdown templates for UI reviews, component specs, design briefs | `audit report`, `ui review`, `component spec`, `component specification`, `specification`, `design brief`, `copy sheet`, `response template`, `ux analysis` | [skills/templates/SKILL.md](skills/templates/SKILL.md) |
 
 ---
 

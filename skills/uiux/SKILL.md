@@ -34,6 +34,12 @@ triggers:
     - usability
     - forms
     - navigation
+    - audit report
+    - ui review
+    - component spec
+    - component specification
+    - design brief
+    - copy sheet
 ---
 
 # UI/UX Production Playbook
@@ -67,6 +73,9 @@ Load **only** the files needed for the current task. Do NOT load all references.
 | `references/interaction-motion.md` | Touch targets, loading states, animations |
 | `references/forms-navigation.md` | Forms, errors, search, sidebars, onboarding |
 | `references/process-audits.md` | UI reviews, heuristic evals, accessibility audits |
+| `templates/ui-review-report.md.template` | Conducting formal UI/UX reviews and heuristic audits |
+| `templates/component-spec.md.template` | Defining variant and accessibility specs for design system components |
+| `templates/design-brief.md.template` | Creating page/flow UX design briefs |
 
 ### Extended (load only when task explicitly needs it)
 
