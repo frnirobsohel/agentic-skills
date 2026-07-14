@@ -13,7 +13,7 @@
 
 **Agentic Skills** is an open-source, highly-curated repository containing production-grade behaviors, design standards, and system playbooks for AI coding assistants (like Gemini, Cursor, Copilot, etc.). Optimize your AI workflows by giving your agents specialized knowledge.
 
-[Explore Skills](#-available-skills) • [Setup Guide](#%EF%B8%8F-quick-setup) • [Demo](#-demo) • [Contributing](CONTRIBUTING.md) • [Changelog](CHANGELOG.md)
+[Explore Skills](#-available-skills) • [Setup Guide](#%EF%B8%8F-quick-setup) • [Demo](#-demo) • [Philosophy](docs/PHILOSOPHY.md) • [Contributing](CONTRIBUTING.md) • [Changelog](CHANGELOG.md)
 
 </div>
 
@@ -22,6 +22,9 @@
 ## 🚀 Why Agentic Skills?
 
 AI agents perform significantly better when they are guided by well-defined **persona constraints**, **quality standards**, and **workflows**. This repository provides modular configuration blocks to inject directly into your AI workspace.
+
+> 💡 **Core Tenet:** *Better Research → Better Skills → Better AI Reasoning → Better Results.*  
+> Read our full [Vision & Contributor Philosophy](docs/PHILOSOPHY.md) to understand the standards behind every playbook.
 
 | 🛠️ Skill Name | 📂 Category | 🎯 Primary Goal | ⚡ Active Triggers |
 | :--- | :--- | :--- | :--- |
@@ -83,6 +86,7 @@ Create 10 E-commerce Buttons using HTML and CSS, and save the file so I can view
 ├── CONTRIBUTING.md        # Contribution guidelines
 ├── AGENTS.md              # AI Agent Entrypoint & Skill Index
 ├── docs/
+│   ├── PHILOSOPHY.md      # Vision, core tenets, & quality rules
 │   └── SETUP.md           # Multi-platform setup (Cursor, Claude, Gemini, Copilot)
 ├── eval/
 │   └── cases.json         # Routing eval test cases

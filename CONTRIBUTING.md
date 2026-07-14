@@ -5,8 +5,9 @@ Thank you for helping build production-grade playbooks for AI coding assistants.
 ## Before You Start
 
 1. Read [AGENTS.md](AGENTS.md) to understand the routing model.
-2. Read [docs/SETUP.md](docs/SETUP.md) if you are testing skills locally.
-3. Check [open issues](https://github.com/frnirobsohel/agentic-skills/issues) to avoid duplicate work.
+2. Read [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) to understand our vision, quality standards, and core tenets.
+3. Read [docs/SETUP.md](docs/SETUP.md) if you are testing skills locally.
+4. Check [open issues](https://github.com/frnirobsohel/agentic-skills/issues) to avoid duplicate work.
 
 ## Ways to Contribute
 
