@@ -27,6 +27,7 @@ triggers:
     - rsc
     - gen-ui
     - server action
+---
 
 # Frontend Production Playbook (Legendary Level)
 
