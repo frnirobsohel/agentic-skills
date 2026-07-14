@@ -1,0 +1,33 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate skill structure
+        run: node scripts/validate_skills.js
+
+      - name: Run routing eval
+        run: node scripts/run_eval.js
+
+      - name: Check for absolute file paths
+        run: |
+          if grep -r "file:///" --include="*.md" .; then
+            echo "Found absolute file:/// paths in markdown files"
+            exit 1
+          fi
+          echo "No absolute file paths found."

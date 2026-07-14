@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10 E-Commerce Button Designs | Premium UI Kit</title>
+  <meta name="description" content="A showcase of 10 premium, production-ready e-commerce button styles built with pure HTML and CSS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ──────────────────────────────────────────
+       DESIGN TOKENS
+    ────────────────────────────────────────── */
+    :root {
+      --clr-bg:          #0d0f14;
+      --clr-surface:     #161a23;
+      --clr-border:      rgba(255,255,255,0.08);
+      --clr-text-main:   #f0f2f8;
+      --clr-text-muted:  #6b7280;
+
+      --violet:          #7c3aed;
+      --violet-light:    #9f67f9;
+      --indigo:          #4f46e5;
+      --cyan:            #06b6d4;
+      --emerald:         #10b981;
+      --amber:           #f59e0b;
+      --rose:            #f43f5e;
+
+      --radius:          12px;
+      --transition:      0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-text-main);
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(124, 58, 237, 0.15);
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      color: var(--violet-light);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 60%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px;
+    }
+    .subtitle {
+      color: var(--clr-text-muted);
+      font-size: 16px;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+    }
+    .card-number {
+      position: absolute;
+      top: 16px; right: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--clr-text-muted);
+      text-transform: uppercase;
+    }
+    .card-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--clr-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    /* ── BASE BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all var(--transition);
+      min-height: 48px;
+      white-space: nowrap;
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--violet-light);
+      outline-offset: 3px;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ══ 01 — Gradient Glow ══ */
+    .btn-glow {
+      background: linear-gradient(135deg, var(--violet) 0%, var(--indigo) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(124,58,237,0.55);
+    }
+    .btn-glow:hover::after { opacity: 1; }
+    .btn-glow:active { transform: translateY(0); }
+
+    /* ══ 02 — Add to Cart ══ */
+    .btn-cart {
+      background: var(--emerald);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(16,185,129,0.35);
+    }
+    .btn-cart:hover {
+      background: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16,185,129,0.5);
+    }
+    .btn-cart:active { transform: scale(0.97); }
+    .btn-cart .cart-icon { transition: transform var(--transition); }
+    .btn-cart:hover .cart-icon { transform: rotate(-15deg) scale(1.1); }
+
+    /* ══ 03 — Outline Ghost ══ */
+    .btn-outline {
+      background: transparent;
+      color: var(--violet-light);
+      border: 2px solid var(--violet);
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--violet);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+      z-index: -1;
+    }
+    .btn-outline:hover { color: #fff; border-color: var(--violet); }
+    .btn-outline:hover::before { transform: scaleX(1); }
+
+    /* ══ 04 — Shimmer Amber ══ */
+    .btn-shimmer {
+      background: linear-gradient(90deg, var(--amber), #fb923c, var(--amber));
+      background-size: 200% 100%;
+      color: #1a1000;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+      animation: shimmer 2.5s linear infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+    .btn-shimmer:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(245,158,11,0.55);
+    }
+
+    /* ══ 05 — Wishlist ══ */
+    .btn-wishlist {
+      background: rgba(244,63,94,0.1);
+      border: 2px solid rgba(244,63,94,0.35);
+      color: var(--rose);
+    }
+    .btn-wishlist:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(244,63,94,0.4);
+    }
+    .btn-wishlist .heart { transition: transform var(--transition); }
+    .btn-wishlist:hover .heart {
+      transform: scale(1.35);
+      animation: heartbeat 0.4s ease;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1.35); }
+      50%       { transform: scale(1.1); }
+    }
+
+    /* ══ 06 — Neon Cyan ══ */
+    .btn-neon {
+      background: transparent;
+      border: 2px solid var(--cyan);
+      color: var(--cyan);
+      text-shadow: 0 0 8px rgba(6,182,212,0.6);
+      box-shadow: 0 0 12px rgba(6,182,212,0.2), inset 0 0 12px rgba(6,182,212,0.05);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    .btn-neon:hover {
+      background: var(--cyan);
+      color: #0d0f14;
+      text-shadow: none;
+      box-shadow: 0 0 24px rgba(6,182,212,0.7), 0 0 48px rgba(6,182,212,0.3);
+    }
+
+    /* ══ 07 — Loading ══ */
+    .btn-loading {
+      background: linear-gradient(135deg, var(--indigo), var(--violet));
+      color: #fff;
+      cursor: wait;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ══ 08 — Pill Minimal ══ */
+    .btn-pill {
+      background: #fff;
+      color: #0d0f14;
+      border-radius: 100px;
+      padding: 13px 32px;
+      font-weight: 700;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .btn-pill:hover {
+      background: #f0f0ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124,58,237,0.3);
+    }
+    .btn-pill .arrow { display: inline-block; transition: transform var(--transition); }
+    .btn-pill:hover .arrow { transform: translateX(5px); }
+
+    /* ══ 09 — Danger / Remove ══ */
+    .btn-danger {
+      background: rgba(239,68,68,0.1);
+      border: 1.5px solid rgba(239,68,68,0.4);
+      color: #f87171;
+      font-size: 14px;
+    }
+    .btn-danger:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(220,38,38,0.45);
+    }
+    .btn-danger:active { transform: scale(0.96); }
+
+    /* ══ 10 — Glassmorphism ══ */
+    .card-glass {
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(79,70,229,0.1));
+      border: 1px solid rgba(124,58,237,0.25);
+    }
+    .card-glass::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15), transparent 65%);
+      pointer-events: none;
+    }
+    .btn-glass {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 15px 36px;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .btn-glass:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(124,58,237,0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+    .btn-glass .gem { transition: transform var(--transition), filter var(--transition); }
+    .btn-glass:hover .gem {
+      transform: rotate(20deg) scale(1.2);
+      filter: drop-shadow(0 0 6px rgba(167,139,250,0.8));
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 72px;
+      color: var(--clr-text-muted);
+      font-size: 13px;
+    }
+    footer span { color: var(--violet-light); }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      UI Kit &middot; E-Commerce
+    </div>
+    <h1>10 E-Commerce Button Styles</h1>
+    <p class="subtitle">Premium, accessible, production-ready buttons — crafted with pure HTML &amp; CSS. Hover করুন magic দেখতে!</p>
+  </header>
+
+  <main class="grid">
+
+    <!-- 01 -->
+    <div class="card">
+      <span class="card-number">01</span>
+      <button id="btn-buy-now" class="btn btn-glow" aria-label="Buy Now">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Buy Now
+      </button>
+      <span class="card-label">Gradient Glow — Primary CTA</span>
+    </div>
+
+    <!-- 02 -->
+    <div class="card">
+      <span class="card-number">02</span>
+      <button id="btn-add-cart" class="btn btn-cart" aria-label="Add to Cart">
+        <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.98-1.69L23 6H6"/>
+        </svg>
+        Add to Cart
+      </button>
+      <span class="card-label">Add to Cart — Morphing Icon</span>
+    </div>
+
+    <!-- 03 -->
+    <div class="card">
+      <span class="card-number">03</span>
+      <button id="btn-explore" class="btn btn-outline" aria-label="Explore Collection">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        Explore Collection
+      </button>
+      <span class="card-label">Outline Ghost — Fill Slide</span>
+    </div>
+
+    <!-- 04 -->
+    <div class="card">
+      <span class="card-number">04</span>
+      <button id="btn-flash-buy" class="btn btn-shimmer" aria-label="Flash Sale Buy Now">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        Flash Sale — Buy Now
+      </button>
+      <span class="card-label">Amber Shimmer — Urgency CTA</span>
+    </div>
+
+    <!-- 05 -->
+    <div class="card">
+      <span class="card-number">05</span>
+      <button id="btn-wishlist" class="btn btn-wishlist" aria-label="Add to Wishlist">
+        <svg class="heart" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/>
+        </svg>
+        Add to Wishlist
+      </button>
+      <span class="card-label">Wishlist — Heart Beat</span>
+    </div>
+
+    <!-- 06 -->
+    <div class="card">
+      <span class="card-number">06</span>
+      <button id="btn-flash-deal" class="btn btn-neon" aria-label="Claim Flash Deal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        Claim Deal
+      </button>
+      <span class="card-label">Neon Cyan — Flash Deal</span>
+    </div>
+
+    <!-- 07 -->
+    <div class="card">
+      <span class="card-number">07</span>
+      <button id="btn-processing" class="btn btn-loading" aria-label="Processing" aria-busy="true">
+        <div class="spinner" role="status" aria-hidden="true"></div>
+        Processing…
+      </button>
+      <span class="card-label">Loading State — Processing</span>
+    </div>
+
+    <!-- 08 -->
+    <div class="card">
+      <span class="card-number">08</span>
+      <button id="btn-shop-now" class="btn btn-pill" aria-label="Shop Now">
+        Shop Now
+        <span class="arrow" aria-hidden="true">&#8594;</span>
+      </button>
+      <span class="card-label">Pill Shape — Minimal CTA</span>
+    </div>
+
+    <!-- 09 -->
+    <div class="card">
+      <span class="card-number">09</span>
+      <button id="btn-remove" class="btn btn-danger" aria-label="Remove from Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+        </svg>
+        Remove from Cart
+      </button>
+      <span class="card-label">Danger — Remove / Delete</span>
+    </div>
+
+    <!-- 10 -->
+    <div class="card card-glass">
+      <span class="card-number">10</span>
+      <button id="btn-premium" class="btn btn-glass" aria-label="Unlock Premium">
+        <svg class="gem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+          <line x1="12" y1="22" x2="12" y2="2"/>
+          <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+        </svg>
+        Unlock Premium
+      </button>
+      <span class="card-label">Glassmorphism — Premium CTA</span>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Built with &#10084;&#65039; using <span>Pure HTML &amp; CSS</span> &middot; No Framework &middot; No JS Library</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "description": "Eval cases for Agentic Skills keyword routing. Each case tests whether a user prompt should match the expected skill and optional reference files.",
+  "cases": [
+    {
+      "id": "uiux-001",
+      "prompt": "Redesign this dashboard with better spacing and dark mode support",
+      "expected_skill": "uiux",
+      "expected_keywords_hit": ["dashboard", "dark mode", "spacing"],
+      "expected_references": ["references/layout-spacing.md", "references/colors-typography.md"]
+    },
+    {
+      "id": "uiux-002",
+      "prompt": "Audit this landing page for WCAG accessibility and contrast ratios",
+      "expected_skill": "uiux",
+      "expected_keywords_hit": ["accessibility", "landing page"],
+      "expected_references": ["references/process-audits.md", "references/colors-typography.md"]
+    },
+    {
+      "id": "uiux-003",
+      "prompt": "Improve the form error messages and sidebar navigation UX",
+      "expected_skill": "uiux",
+      "expected_keywords_hit": ["ux"],
+      "expected_references": ["references/forms-navigation.md"]
+    },
+    {
+      "id": "uiux-004",
+      "prompt": "Improve the UI with micro-interactions and loading states on these buttons",
+      "expected_skill": "uiux",
+      "expected_keywords_hit": ["ui"],
+      "expected_references": ["references/interaction-motion.md"]
+    },
+    {
+      "id": "frontend-001",
+      "prompt": "Build a Next.js 15 page with Server Actions and React Query",
+      "expected_skill": "frontend",
+      "expected_keywords_hit": ["next.js", "react"],
+      "expected_references": ["references/nextjs-conventions.md", "references/state-management.md"]
+    },
+    {
+      "id": "frontend-002",
+      "prompt": "Refactor this React component to use Tailwind CVA and strict TypeScript",
+      "expected_skill": "frontend",
+      "expected_keywords_hit": ["react", "tailwind", "typescript"],
+      "expected_references": ["references/components-css.md", "references/coding-standards.md"]
+    },
+    {
+      "id": "frontend-003",
+      "prompt": "Set up a frontend Turborepo monorepo with Feature-Sliced Design",
+      "expected_skill": "frontend",
+      "expected_keywords_hit": ["frontend"],
+      "expected_references": ["references/architecture.md", "references/project-context.md"]
+    },
+    {
+      "id": "frontend-004",
+      "prompt": "Optimize web vitals — improve LCP and CLS, add Vitest tests for this web app",
+      "expected_skill": "frontend",
+      "expected_keywords_hit": ["web vitals"],
+      "expected_references": ["references/performance-testing.md"]
+    },
+    {
+      "id": "frontend-005",
+      "prompt": "Implement streaming gen-ui with Vercel AI SDK",
+      "expected_skill": "frontend",
+      "expected_keywords_hit": ["gen-ui"],
+      "expected_references": ["references/gen-ui.md"]
+    },
+    {
+      "id": "templates-001",
+      "prompt": "Create a component specification for an accessible modal",
+      "expected_skill": "templates",
+      "expected_keywords_hit": ["component spec"],
+      "expected_references": ["references/response-templates.md"]
+    },
+    {
+      "id": "templates-002",
+      "prompt": "Conduct a UI review and audit report for this cart page",
+      "expected_skill": "templates",
+      "expected_keywords_hit": ["ui review", "audit report"],
+      "expected_references": ["references/response-templates.md"]
+    },
+    {
+      "id": "negative-001",
+      "prompt": "Write a Python script to parse CSV files",
+      "expected_skill": null,
+      "expected_keywords_hit": [],
+      "expected_references": []
+    }
+  ]
+}
