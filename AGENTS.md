@@ -22,8 +22,8 @@ When you receive a user request, you **MUST** follow this routing procedure befo
 
 | 🛠️ Skill Name | 📦 Version | 📂 Category | 🎯 Primary Goal | ⚡ Active Triggers | 📄 Location |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **UI/UX Production Playbook** | `1.0.0` | `UI/UX Design` | High-fidelity UI/UX design audits, layout consistency, and brand identity | `ui`, `ux`, `redesign`, `dashboard`, `accessibility`, `landing page`, `theme`, `dark mode`, `spacing`, `component library`, `usability`, `color system`, `figma`, `design tokens`, `audit report`, `ui review`, `component spec`, `component specification`, `design brief`, `copy sheet` | [skills/uiux/SKILL.md](skills/uiux/SKILL.md) |
-| **Frontend Production Playbook** | `1.0.0` | `Frontend` | High-performance React/Next.js development, state management, and modern styling | `frontend`, `react`, `next.js`, `tailwind`, `css`, `html`, `javascript`, `typescript`, `web app`, `client-side` | [skills/frontend/SKILL.md](skills/frontend/SKILL.md) |
+| **UI/UX Production Playbook** | `1.0.0` | `UI/UX Design` | High-fidelity UI/UX design audits, layout consistency, and brand identity | `ui`, `ux`, `redesign`, `dashboard`, `website`, `landing page`, `mobile app`, `accessibility`, `design system`, `design tokens`, `improve ui`, `brand`, `color system`, `typography`, `touch ux`, `empty state`, `dark mode`, `spacing`, `theme`, `figma`, `component library`, `usability`, `forms`, `navigation`, `audit report`, `ui review`, `component spec`, `component specification`, `design brief`, `copy sheet` | [skills/uiux/SKILL.md](skills/uiux/SKILL.md) |
+| **Frontend Production Playbook** | `1.0.0` | `Frontend` | High-performance React/Next.js development, state management, and modern styling | `frontend`, `react`, `next.js`, `nextjs`, `tailwind`, `css`, `html`, `javascript`, `typescript`, `web app`, `client-side`, `state management`, `component`, `web vitals`, `rsc`, `gen-ui`, `server action` | [skills/frontend/SKILL.md](skills/frontend/SKILL.md) |
 
 ---
 

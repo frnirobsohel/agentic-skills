@@ -66,7 +66,15 @@ function matchSkill(prompt, triggers) {
   for (const [skill, keywords] of Object.entries(triggers)) {
     let score = 0;
     for (const kw of keywords) {
-      if (lower.includes(kw)) score++;
+      const escaped = kw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      let regexStr = `(?<!\\w)${escaped}(?!\\w)`;
+      if (/\w$/.test(kw)) {
+        regexStr = `(?<!\\w)${escaped}s?(?!\\w)`;
+      }
+      const regex = new RegExp(regexStr, 'i');
+      if (regex.test(lower)) {
+        score += kw.length;
+      }
     }
     if (score > bestScore) {
       bestScore = score;

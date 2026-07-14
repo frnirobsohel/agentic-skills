@@ -105,6 +105,69 @@ function validateAgentsMd(errors) {
   }
 }
 
+function validateTriggersSync(errors) {
+  const agentsPath = path.join(ROOT, "AGENTS.md");
+  if (!fs.existsSync(agentsPath)) return;
+
+  const skillKeywords = {};
+  const skillDirs = fs.readdirSync(SKILLS_DIR)
+    .map((name) => path.join(SKILLS_DIR, name))
+    .filter((p) => fs.statSync(p).isDirectory());
+
+  for (const dir of skillDirs) {
+    const skillName = path.basename(dir);
+    const skillMd = path.join(dir, "SKILL.md");
+    if (!fs.existsSync(skillMd)) continue;
+
+    const keywords = new Set();
+    let inKeywords = false;
+    for (const line of fs.readFileSync(skillMd, "utf-8").split("\n")) {
+      if (line.trim() === "keywords:") {
+        inKeywords = true;
+        continue;
+      }
+      if (inKeywords) {
+        if (line.trim().startsWith("- ")) {
+          keywords.add(line.trim().slice(2).trim().toLowerCase());
+        } else if (line && !line.startsWith(" ")) {
+          break;
+        }
+      }
+    }
+    skillKeywords[skillName] = keywords;
+  }
+
+  const agentsKeywords = {};
+  for (const line of fs.readFileSync(agentsPath, "utf-8").split("\n")) {
+    const match = line.match(/skills\/(\w+)\/SKILL\.md/);
+    if (!match) continue;
+    const skill = match[1];
+    const cells = line.split("|").map((c) => c.trim()).filter(Boolean);
+    for (const cell of cells) {
+      if (cell.startsWith("`") && cell.includes(",")) {
+        const kws = cell.replace(/`/g, "").split(",").map((k) => k.trim().toLowerCase());
+        if (!agentsKeywords[skill]) agentsKeywords[skill] = new Set();
+        kws.forEach((k) => agentsKeywords[skill].add(k));
+      }
+    }
+  }
+
+  for (const skill of Object.keys(skillKeywords)) {
+    const skillKws = skillKeywords[skill];
+    const agentsKws = agentsKeywords[skill] || new Set();
+
+    const missingInAgents = [...skillKws].filter(k => !agentsKws.has(k));
+    const missingInSkill = [...agentsKws].filter(k => !skillKws.has(k));
+
+    if (missingInAgents.length > 0) {
+      errors.push(`AGENTS.md is missing the following triggers for skill '${skill}': ${missingInAgents.map(k => '`' + k + '`').join(", ")}`);
+    }
+    if (missingInSkill.length > 0) {
+      errors.push(`skills/${skill}/SKILL.md is missing the following triggers found in AGENTS.md: ${missingInSkill.map(k => '`' + k + '`').join(", ")}`);
+    }
+  }
+}
+
 function main() {
   const errors = [];
 
@@ -120,6 +183,7 @@ function main() {
   }
 
   validateAgentsMd(errors);
+  validateTriggersSync(errors);
 
   const changelog = path.join(ROOT, "CHANGELOG.md");
   if (!fs.existsSync(changelog)) {
