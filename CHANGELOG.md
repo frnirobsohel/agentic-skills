@@ -7,7 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ### Added
-- (Nothing yet)
+- Modular per-skill `templates/` folders (`skills/uiux/templates/`, `skills/frontend/templates/`) with starter files and audit templates.
+
+### Changed
+- Project license updated from Apache License 2.0 to **MIT License**.
+- Reorganized and documented permanent repository structure (`LICENSE`, `README`, `CHANGELOG`, `CONTRIBUTING`, `AGENTS.md`, `eval`, `scripts`, `skills`) in `docs/PHILOSOPHY.md`.
+
+### Removed
+- Removed redundant root `skills/templates/` directory to prevent naming collisions and enforce Locality of Reference.
 
 ## [1.1.0] - 2026-07-14
 

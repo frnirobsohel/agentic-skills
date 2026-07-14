@@ -61,7 +61,7 @@ The repository must remain structured, scalable, and predictable for both human 
 
 ```
 agentic-skills/
-├── LICENSE                # Apache 2.0 open-source license
+├── LICENSE                # MIT open-source license
 ├── README.md              # Project overview, demo showcase, and quick setup guide
 ├── CHANGELOG.md           # Version history and release notes (`[Unreleased]` required)
 ├── CONTRIBUTING.md        # Contribution guidelines and skill authoring standards
