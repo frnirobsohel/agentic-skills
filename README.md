@@ -30,6 +30,12 @@ AI agents perform significantly better when they are guided by well-defined **pe
 | :--- | :--- | :--- | :--- |
 | **[UI/UX Production Playbook](skills/uiux/SKILL.md)** | `UI/UX Design` | High-fidelity UI/UX design audits & accessibility standard compliance | `ui`, `ux`, `redesign`, `dashboard`, `accessibility` |
 | **[Frontend Production Playbook](skills/frontend/SKILL.md)** | `Frontend` | High-performance React/Next.js development, state management, modern styling | `frontend`, `react`, `next.js`, `css`, `html`, `javascript` |
+| **[System Design & Architecture Playbook](skills/system-design/SKILL.md)** | `System Design` | Scalable system architecture design, tech stack trade-offs, DB schema, and API contracts | `system design`, `architecture`, `tech stack`, `db design`, `data flow` |
+| **[PHP & Laravel Production Playbook](skills/php/SKILL.md)** | `Backend` | Modern PHP development, PSR standards, database optimization, and security practices | `php`, `laravel`, `composer`, `psr`, `eloquent` |
+| **[Python & Frameworks Production Playbook](skills/python/SKILL.md)** | `Backend` | Modern Python backend development, static typing, and FastAPI/Django standards | `python`, `django`, `fastapi`, `poetry` |
+| **[Go & Concurrency Production Playbook](skills/go/SKILL.md)** | `Backend` | Concurrent, high-performance Go (Golang) backend development and resource safety | `go`, `golang`, `gin`, `fiber`, `gorm`, `goroutine` |
+| **[DevOps & CI/CD Playbook](skills/devops/SKILL.md)** | `DevOps` | Optimized containerization, dependency-cached pipelines, and verified rollouts | `devops`, `docker`, `github actions`, `ci/cd`, `pipeline` |
+| **[Rust & Systems Production Playbook](skills/rust/SKILL.md)** | `Backend` | Systems-level, highly performant, and memory-safe Rust backend programming | `rust`, `cargo`, `axum`, `actix`, `serde`, `borrow checker`, `lifetime` |
 
 ---
 

@@ -1,0 +1,67 @@
+package handlers
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+// Request Binding Schema
+type Create[ModelName]Request struct {
+	Email    string `json:"email" binding:"required,email"`
+	Password string `json:"password" binding:"required,min=8"`
+}
+
+// Response Schema
+type [ModelName]Response struct {
+	ID    int    `json:"id"`
+	Email string `json:"email"`
+}
+
+type [ModelName]Handler struct {
+	service [ModelName]Service
+}
+
+func New[ModelName]Handler(s [ModelName]Service) *[ModelName]Handler {
+	return &[ModelName]Handler{service: s}
+}
+
+// Create Handler Action
+func (h *[ModelName]Handler) Create(c *gin.Context) {
+	var req Create[ModelName]Request
+	
+	// Bind JSON request body and validate rules
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"error": gin.H{
+				"code":    "VALIDATION_FAILED",
+				"message": "Invalid input request parameters",
+				"details": err.Error(),
+			},
+		})
+		return
+	}
+
+	// Invoke backend service business logic
+	result, err := h.service.CreateUser(c.Request.Context(), req.Email, req.Password)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"error": gin.H{
+				"code":    "INTERNAL_ERROR",
+				"message": "Failed to create resource",
+			},
+		})
+		return
+	}
+
+	// Success response
+	c.JSON(http.StatusCreated, gin.H{
+		"success": true,
+		"data": [ModelName]Response{
+			ID:    result.ID,
+			Email: result.Email,
+		},
+	})
+}

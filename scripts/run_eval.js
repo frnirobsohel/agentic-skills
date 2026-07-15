@@ -41,7 +41,7 @@ function loadTriggers() {
   const agentsPath = path.join(ROOT, "AGENTS.md");
   if (fs.existsSync(agentsPath)) {
     for (const line of fs.readFileSync(agentsPath, "utf-8").split("\n")) {
-      const match = line.match(/skills\/(\w+)\/SKILL\.md/);
+      const match = line.match(/skills\/([\w-]+)\/SKILL\.md/);
       if (!match) continue;
       const skill = match[1];
       const cells = line.split("|").map((c) => c.trim()).filter(Boolean);

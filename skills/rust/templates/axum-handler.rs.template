@@ -1,0 +1,73 @@
+use axum::{
+    extract::State,
+    http::StatusCode,
+    response::{IntoResponse, Response},
+    Json,
+};
+use serde::{Deserialize, Serialize};
+use std::sync::Arc;
+
+// Request Input Model Schema
+#[derive(Debug, Deserialize)]
+pub struct Create[ModelName]Request {
+    pub email: String,
+    pub username: String,
+}
+
+// Response Output Model Schema
+#[derive(Debug, Serialize)]
+pub struct [ModelName]Response {
+    pub id: i64,
+    pub email: String,
+}
+
+// App State Container
+pub struct AppState {
+    pub service: Box<dyn [ModelName]Service + Send + Sync>,
+}
+
+// Handler Error wrapper
+pub enum AppError {
+    Validation(String),
+    Internal(String),
+}
+
+// Convert custom app errors into HTTP responses
+impl IntoResponse for AppError {
+    fn into_response(self) -> Response {
+        let (status, err_msg) = match self {
+            AppError::Validation(msg) => (StatusCode::BAD_REQUEST, msg),
+            AppError::Internal(msg) => (StatusCode::INTERNAL_SERVER_ERROR, msg),
+        };
+
+        let body = Json(serde_json::json!({
+            "success": false,
+            "error": err_msg
+        }));
+
+        (status, body).into_response()
+    }
+}
+
+// Create Handler logic Action
+pub async fn create_[model_name](
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<Create[ModelName]Request>,
+) -> Result<Json<[ModelName]Response>, AppError> {
+    // Simple basic checks
+    if payload.email.is_empty() {
+        return Err(AppError::Validation("Email cannot be empty".to_string()));
+    }
+
+    // Call service layer
+    let result = state
+        .service
+        .create_user(payload.email, payload.username)
+        .await
+        .map_err(|e| AppError::Internal(e.to_string()))?;
+
+    Ok(Json([ModelName]Response {
+        id: result.id,
+        email: result.email,
+    }))
+}

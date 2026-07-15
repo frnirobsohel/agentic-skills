@@ -1,0 +1,95 @@
+# System Design Specification: [Project Name]
+
+This document details the high-level architecture, database schemas, API interfaces, and infrastructure plan for **[Project Name]**.
+
+---
+
+## 1. Requirements & Scope
+
+### Functional Requirements (What the system does)
+* [ ] **FR 1:** [Description of primary function]
+* [ ] **FR 2:** [Description of secondary function]
+
+### Non-Functional Requirements (Performance & scale targets)
+* [ ] **NFR 1:** Scalability: System must support up to [X] concurrent active users.
+* [ ] **NFR 2:** Latency: API read request response time (p95) must be < [X]ms.
+* [ ] **NFR 3:** Security: Enforce OAuth2 / JWT authentication with TLS 1.3.
+
+---
+
+## 2. Tech Stack & Architecture Trade-offs
+
+| Component | Selected Technology | Justification & Alternatives Evaluated |
+| :--- | :--- | :--- |
+| **Frontend** | [e.g., Next.js 15 App Router] | Selected for SSR (SEO needs) vs client-side React SPA. |
+| **Backend** | [e.g., Go / Gin] | Selected for high concurrency & low memory overhead vs Node.js. |
+| **Primary Database**| [e.g., PostgreSQL] | Selected for transactional safety (ACID) vs MongoDB. |
+| **Cache Store** | [e.g., Redis] | Used for session storage and database caching. |
+
+---
+
+## 3. Database Schema & Data Models
+
+### Entity Relationship Diagram (ERD Description)
+```text
+[Users] (1) ------ (N) [Posts]
+  - id (UUID, PK)        - id (UUID, PK)
+  - email (VARCHAR)      - user_id (UUID, FK -> Users.id)
+  - created_at           - content (TEXT)
+                         - created_at
+```
+
+### Table Definitions (DDL Scaffolding)
+```sql
+-- Users Table
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Posts Table
+CREATE TABLE posts (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Indexes
+CREATE INDEX idx_posts_user_id ON posts(user_id);
+```
+
+---
+
+## 4. API Endpoints & Interfaces
+
+### User Registration
+`POST /api/v1/users`
+- **Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "secure_password_here"
+}
+```
+- **Response (201 Created):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "usr_78ab91",
+    "email": "user@example.com"
+  }
+}
+```
+
+---
+
+## 5. Scaling, Caching & Infrastructure Map
+
+* **Load Balancer:** NGINX handles SSL termination and distributes traffic to stateless API containers.
+* **Cache Strategy:** Cache user profile data in Redis with a TTL of 1 hour. Invalidate cache on profile update.
+* **File Storage:** Uploaded media files are stored directly in AWS S3 (pre-signed URLs).
+* **Monitoring:** Prometheus & Grafana scrape performance metrics from API containers.

@@ -60,7 +60,7 @@
     },
     {
       "id": "frontend-005",
-      "prompt": "Implement streaming gen-ui with Vercel AI SDK",
+      "prompt": "Implement streaming gen-ui with React AI SDK",
       "expected_skill": "frontend",
       "expected_keywords_hit": ["gen-ui"],
       "expected_references": ["references/gen-ui.md"]
@@ -80,8 +80,134 @@
       "expected_references": ["templates/ui-review-report.md.template"]
     },
     {
+      "id": "systemdesign-001",
+      "prompt": "Create a system design document for a high-concurrency chat application",
+      "expected_skill": "system-design",
+      "expected_keywords_hit": ["system design", "design doc"],
+      "expected_references": ["templates/system-design-spec.md.template", "references/tech-stack-selection.md"]
+    },
+    {
+      "id": "systemdesign-002",
+      "prompt": "Design a relational database schema for user profiles with UUID as PK",
+      "expected_skill": "system-design",
+      "expected_keywords_hit": ["database schema"],
+      "expected_references": ["references/database-schema-design.md"]
+    },
+    {
+      "id": "systemdesign-003",
+      "prompt": "Draw up an architecture blueprint detailing API endpoints, security, and caching",
+      "expected_skill": "system-design",
+      "expected_keywords_hit": ["architecture blueprint"],
+      "expected_references": ["references/api-architecture.md", "references/scalability-caching-security.md"]
+    },
+    {
+      "id": "php-001",
+      "prompt": "Write a Laravel controller with pagination and eager-loaded relations in eloquent",
+      "expected_skill": "php",
+      "expected_keywords_hit": ["laravel", "eloquent"],
+      "expected_references": ["templates/laravel-controller.php.template", "references/laravel-conventions.md"]
+    },
+    {
+      "id": "php-002",
+      "prompt": "Ensure this PHP script runs under strict typing and complies with PSR-12 coding standard",
+      "expected_skill": "php",
+      "expected_keywords_hit": ["php", "psr"],
+      "expected_references": ["references/language-standards.md"]
+    },
+    {
+      "id": "php-003",
+      "prompt": "Review this PHP form for XSS and SQL injection security issues",
+      "expected_skill": "php",
+      "expected_keywords_hit": ["php"],
+      "expected_references": ["references/security-best-practices.md"]
+    },
+    {
+      "id": "python-001",
+      "prompt": "Write a FastAPI endpoint with Pydantic validation and dependency injection",
+      "expected_skill": "python",
+      "expected_keywords_hit": ["fastapi", "pydantic"],
+      "expected_references": ["templates/fastapi-endpoint.py.template", "references/fastapi-django-conventions.md"]
+    },
+    {
+      "id": "python-002",
+      "prompt": "Optimize Django database queries by adding select_related and prefetch_related for this model",
+      "expected_skill": "python",
+      "expected_keywords_hit": ["django"],
+      "expected_references": ["references/fastapi-django-conventions.md"]
+    },
+    {
+      "id": "python-003",
+      "prompt": "Format this Python script following PEP 8 standard and add proper type hints",
+      "expected_skill": "python",
+      "expected_keywords_hit": ["python", "pep 8"],
+      "expected_references": ["references/language-standards.md"]
+    },
+    {
+      "id": "go-001",
+      "prompt": "Write a Gin handler in Go with input binding validation and JSON response",
+      "expected_skill": "go",
+      "expected_keywords_hit": ["go", "gin"],
+      "expected_references": ["templates/gin-handler.go.template", "references/language-standards.md"]
+    },
+    {
+      "id": "go-002",
+      "prompt": "Coordinate multiple goroutines using sync.WaitGroup and channel communication",
+      "expected_skill": "go",
+      "expected_keywords_hit": ["goroutine", "channel"],
+      "expected_references": ["references/concurrency-goroutines.md"]
+    },
+    {
+      "id": "go-003",
+      "prompt": "Audit this Go API endpoint to ensure database queries are parameterized and secure",
+      "expected_skill": "go",
+      "expected_keywords_hit": ["go"],
+      "expected_references": ["references/security-best-practices.md"]
+    },
+    {
+      "id": "devops-001",
+      "prompt": "Create a GitHub Actions CI/CD pipeline script to run tests, lint, and build a docker container",
+      "expected_skill": "devops",
+      "expected_keywords_hit": ["github actions", "docker", "pipeline"],
+      "expected_references": ["templates/github-actions.yml.template", "references/ci-cd-pipelines.md"]
+    },
+    {
+      "id": "devops-002",
+      "prompt": "Optimize this Dockerfile by using a multi-stage build and non-root execution",
+      "expected_skill": "devops",
+      "expected_keywords_hit": ["dockerfile"],
+      "expected_references": ["references/containerization-docker.md"]
+    },
+    {
+      "id": "devops-003",
+      "prompt": "Expose health checks ports and inject env vars for this backend deploy spec",
+      "expected_skill": "devops",
+      "expected_keywords_hit": ["deploy"],
+      "expected_references": ["references/deployment-security.md"]
+    },
+    {
+      "id": "rust-001",
+      "prompt": "Write an Axum handler in Rust with JSON serialization using Serde",
+      "expected_skill": "rust",
+      "expected_keywords_hit": ["rust", "axum", "serde"],
+      "expected_references": ["templates/axum-handler.rs.template", "references/language-standards.md"]
+    },
+    {
+      "id": "rust-002",
+      "prompt": "Coordinate async tasks in Rust on the Tokio runtime and send messages",
+      "expected_skill": "rust",
+      "expected_keywords_hit": ["rust", "tokio"],
+      "expected_references": ["references/concurrency-async.md"]
+    },
+    {
+      "id": "rust-003",
+      "prompt": "Solve borrow checker lifetime constraints for this compiler reference",
+      "expected_skill": "rust",
+      "expected_keywords_hit": ["borrow checker", "lifetime"],
+      "expected_references": ["references/language-standards.md"]
+    },
+    {
       "id": "negative-001",
-      "prompt": "Write a Python script to parse CSV files",
+      "prompt": "Write a Ruby script to parse CSV files",
       "expected_skill": null,
       "expected_keywords_hit": [],
       "expected_references": []

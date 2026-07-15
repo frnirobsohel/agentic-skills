@@ -80,10 +80,34 @@ agentic-skills/
 │   ├── validate_skills.js # Automated structure, frontmatter, and link integrity validation
 │   └── run_eval.js        # Automated keyword routing evaluation runner
 └── skills/
+    ├── devops/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- GitHub Actions templates
     ├── frontend/
     │   ├── SKILL.md
     │   ├── references/
     │   └── templates/     <-- Frontend starter templates (React, Next.js, Vitest)
+    ├── go/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- Gin handler templates
+    ├── php/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- Laravel controller templates
+    ├── python/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- FastAPI endpoint templates
+    ├── rust/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- Axum handler templates
+    ├── system-design/
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/     <-- System design spec templates
     └── uiux/
         ├── SKILL.md
         ├── references/

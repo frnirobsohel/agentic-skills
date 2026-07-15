@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ### Added
+- **Rust & Systems Production Playbook** (`skills/rust/`) including formatting guidelines (`rustfmt`/`clippy`), ownership and borrowing rules, async/concurrency standards (Tokio runtime), and an Axum endpoint template.
+- **DevOps & CI/CD Playbook** (`skills/devops/`) including Docker optimization principles (multi-stage, non-root user), CI/CD pipeline automation standards (GitHub Actions), environment configurations, and a GitHub Actions workflow template.
+- **Go & Concurrency Production Playbook** (`skills/go/`) including standard coding standards (`gofmt`), explicit error handling guidelines, concurrency primitives guides, and a Gin framework handler template.
+- **Python & Frameworks Production Playbook** (`skills/python/`) including PEP 8 styling guidelines, type hinting standards, FastAPI/Django query optimizations, and a FastAPI route endpoint template.
+- **PHP & Laravel Production Playbook** (`skills/php/`) including modern PHP standards, Laravel query optimization, security best practices guides, and a controller starter template.
+- **System Design & Architecture Playbook** (`skills/system-design/`) including tech stack selection, DB design, API architecture, scalability reference guides, and a system design spec template.
 - Modular per-skill `templates/` folders (`skills/uiux/templates/`, `skills/frontend/templates/`) with starter files and audit templates.
 
 ### Changed

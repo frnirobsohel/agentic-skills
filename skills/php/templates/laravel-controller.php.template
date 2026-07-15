@@ -1,0 +1,71 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\Store[ModelName]Request;
+use App\Http\Requests\Update[ModelName]Request;
+use App\Http\Resources\[ModelName]Resource;
+use App\Models\[ModelName];
+use App\Services\[ModelName]Service;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+
+class [ModelName]Controller extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct(
+        protected [ModelName]Service $[modelName]Service
+    ) {}
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): AnonymousResourceCollection
+    {
+        $[modelNames] = $this->[modelName]Service->getAllPaginated(15);
+
+        return [ModelName]Resource::collection($[modelNames]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Store[ModelName]Request $request): JsonResponse
+    {
+        $[modelName] = $this->[modelName]Service->create($request->validated());
+
+        return response()->json(new [ModelName]Resource($[modelName]), 201);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show([ModelName] $[modelName]): [ModelName]Resource
+    {
+        return new [ModelName]Resource($[modelName]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Update[ModelName]Request $request, [ModelName] $[modelName]): JsonResponse
+    {
+        $[modelName] = $this->[modelName]Service->update($[modelName], $request->validated());
+
+        return response()->json(new [ModelName]Resource($[modelName]));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy([ModelName] $[modelName]): JsonResponse
+    {
+        $this->[modelName]Service->delete($[modelName]);
+
+        return response()->json(null, 204);
+    }
+}
