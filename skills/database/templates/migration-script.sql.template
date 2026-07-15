@@ -1,0 +1,38 @@
+-- Migration: [Migration Name]
+-- Description: [Brief summary of schema changes and goals]
+
+-- ==========================================
+-- UP MIGRATION (DDL / Safe DML)
+-- ==========================================
+
+-- 1. Set short lock timeout to prevent queue blocks
+SET lock_timeout = '2s';
+
+BEGIN;
+
+-- 2. Scaffolding/Adding new nullable columns (Expand phase)
+-- ALTER TABLE users ADD COLUMN age INT DEFAULT NULL;
+
+-- 3. Creating indexes concurrently (PostgreSQL: must run outside transaction blocks)
+-- COMMIT;
+-- CREATE INDEX CONCURRENTLY idx_users_age ON users(age);
+-- BEGIN;
+
+-- 4. Declare schema tables/views
+-- CREATE TABLE orders (
+--     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+--     user_id UUID NOT NULL REFERENCES users(id) ON DELETE RESTRICT,
+--     total_amount NUMERIC(12, 2) NOT NULL DEFAULT 0.00,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
+
+COMMIT;
+
+-- ==========================================
+-- DOWN MIGRATION (Rollback script)
+-- ==========================================
+
+-- BEGIN;
+-- DROP TABLE IF EXISTS orders;
+-- ALTER TABLE users DROP COLUMN IF EXISTS age;
+-- COMMIT;

@@ -30,7 +30,9 @@ AI agents perform significantly better when they are guided by well-defined **pe
 | :--- | :--- | :--- | :--- |
 | **[UI/UX Production Playbook](skills/uiux/SKILL.md)** | `UI/UX Design` | High-fidelity UI/UX design audits & accessibility standard compliance | `ui`, `ux`, `redesign`, `dashboard`, `accessibility` |
 | **[Frontend Production Playbook](skills/frontend/SKILL.md)** | `Frontend` | High-performance React/Next.js development, state management, modern styling | `frontend`, `react`, `next.js`, `css`, `html`, `javascript` |
-| **[System Design & Architecture Playbook](skills/system-design/SKILL.md)** | `System Design` | Scalable system architecture design, tech stack trade-offs, DB schema, and API contracts | `system design`, `architecture`, `tech stack`, `db design`, `data flow` |
+| **[System Design & Architecture Playbook](skills/system-design/SKILL.md)** | `System Design` | Scalable system architecture design, tech stack trade-offs, DB schema, and API contracts | `system design`, `architecture`, `tech stack`, `data flow` |
+| **[Backend & Fullstack Integration Playbook](skills/backend/SKILL.md)** | `Backend` | Connect APIs to client-side state, map database records to UI/UX components | `backend integration`, `api integration`, `fullstack`, `data fetching`, `state sync` |
+| **[Database Production Playbook](skills/database/SKILL.md)** | `Database` | Design schemas, optimize queries, manage transactions, write zero-downtime migrations | `database schema`, `database optimization`, `query optimization`, `indexing`, `normalization`, `database migration`, `zero-downtime migration` |
 | **[PHP & Laravel Production Playbook](skills/php/SKILL.md)** | `Backend` | Modern PHP development, PSR standards, database optimization, and security practices | `php`, `laravel`, `composer`, `psr`, `eloquent` |
 | **[Python & Frameworks Production Playbook](skills/python/SKILL.md)** | `Backend` | Modern Python backend development, static typing, and FastAPI/Django standards | `python`, `django`, `fastapi`, `poetry` |
 | **[Go & Concurrency Production Playbook](skills/go/SKILL.md)** | `Backend` | Concurrent, high-performance Go (Golang) backend development and resource safety | `go`, `golang`, `gin`, `fiber`, `gorm`, `goroutine` |
@@ -142,25 +144,29 @@ See [docs/SETUP.md](docs/SETUP.md) for step-by-step instructions per platform.
 ### 3. Validate Locally
 
 ```bash
-node scripts/validate_skills.js   # structure, frontmatter, broken refs
-node scripts/run_eval.js          # keyword routing eval (10 cases)
+node scripts/validate_skills.js         # structure, frontmatter, broken refs
+node scripts/validate_code_snippets.js  # lint all code blocks and JSON syntax
+node scripts/run_eval.js                # keyword routing eval (34 cases)
+node scripts/run_quality_eval.js        # LLM-as-a-judge quality comparison (requires GEMINI_API_KEY)
 ```
 
-CI runs both scripts automatically on every push and pull request.
+CI runs these validation scripts automatically on every push and pull request.
 
 ---
 
 ## 🧪 Eval & Quality
 
-This repo includes lightweight eval infrastructure (not full LLM-based grading):
+This repo includes structured validation and automated quality evaluation tools:
 
 | Tool | Purpose |
 | :--- | :--- |
 | `scripts/validate_skills.js` | Checks `SKILL.md` frontmatter, reference file integrity, portable links |
-| `scripts/run_eval.js` | Tests keyword routing against `eval/cases.json` (10 prompt cases) |
-| `.github/workflows/validate-skills.yml` | CI gate — both scripts must pass |
+| `scripts/validate_code_snippets.js` | Parses and validates code syntax, braces balance, and JSON formatting in all files |
+| `scripts/run_eval.js` | Tests keyword routing accuracy against `eval/cases.json` |
+| `scripts/run_quality_eval.js` | Runs LLM generations with/without playbooks and scores output differences across key metrics |
+| `.github/workflows/validate-skills.yml` | CI gate — code/metadata validation scripts must pass |
 
-To add a test case, edit [eval/cases.json](eval/cases.json) and run `node scripts/run_eval.js`.
+To add a keyword routing case, edit [eval/cases.json](eval/cases.json) and run `node scripts/run_eval.js`. To run quality comparison, set `GEMINI_API_KEY` and run `node scripts/run_quality_eval.js`.
 
 ---
 

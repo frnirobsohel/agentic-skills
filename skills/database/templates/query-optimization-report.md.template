@@ -1,0 +1,58 @@
+# Query Optimization Report: [Query Target Name]
+
+Audit report assessing performance indicators, plan execution scans, index usage, and structural optimization paths for [Query Target Name].
+
+---
+
+## 🔍 Slow Query Profile
+
+- **SQL Statement**:
+```sql
+SELECT * FROM orders WHERE user_id = 'usr_123' ORDER BY created_at DESC LIMIT 10;
+```
+- **Observed Execution Time**: `[e.g., 850ms]`
+- **Call Frequency**: `[e.g., 50 requests/sec]`
+
+---
+
+## 📊 Execution Plan Analysis (`EXPLAIN ANALYZE`)
+
+- **Raw Execution Plan Output**:
+```text
+Limit  (cost=1254.40..1254.43 rows=10 width=85) (actual time=842.10..842.12 rows=10 loops=1)
+  ->  Sort  (cost=1254.40..1302.20 rows=19120 width=85) (actual time=842.09..842.10 rows=10 loops=1)
+        Sort Key: created_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        ->  Seq Scan on orders  (cost=0.00..542.00 rows=19120) (actual time=0.02..835.40 loops=1)
+              Filter: (user_id = 'usr_123'::uuid)
+              Rows Removed by Filter: 480000
+```
+
+### Key Performance Findings
+1. **Bottleneck scan**: `Seq Scan on orders` is executing sequential disk scans on 480,000 records.
+2. **Missing Index**: There is no index on `user_id` or composite index on `(user_id, created_at)`.
+3. **Quicksort Cost**: Large memory sorting operations are occurring because sorting is not indexed.
+
+---
+
+## 🛠️ Optimization Action Plan
+
+### 1. Proposed Schema/Index Modifications
+Create a composite index on both the filter and sorting columns:
+```sql
+CREATE INDEX CONCURRENTLY idx_orders_user_created ON orders (user_id, created_at DESC);
+```
+
+### 2. Proposed Query Adjustments
+Limit columns fetched instead of wildcard `SELECT *`:
+```sql
+SELECT id, total_amount, created_at FROM orders WHERE user_id = 'usr_123' ORDER BY created_at DESC LIMIT 10;
+```
+
+---
+
+## 📈 Post-Optimization Verification Plan
+
+- Run `EXPLAIN ANALYZE` again.
+- Verify `Seq Scan` is replaced with `Index Scan using idx_orders_user_created`.
+- Document new execution time (Target: < 10ms).

@@ -1,0 +1,39 @@
+# Validation Mapping Specification: [Form/Page Name]
+
+This document maps server-side API validation codes to client-side input fields, detailing focus behaviors and accessibility considerations.
+
+---
+
+## 🗺️ Field-to-Error Mapping Table
+
+| Form Field ID | API JSON Path | API Error Code | UI Error Message (User Facing) | Client Action on Error |
+| :--- | :--- | :--- | :--- | :--- |
+| `input-email` | `$.email` | `email_taken` | "This email address is already in use." | Highlight field, focus, show error label |
+| `input-email` | `$.email` | `invalid_email` | "Please enter a valid email address." | Highlight field, show error label |
+| `input-password`| `$.password`| `too_short` | "Password must be at least 8 characters." | Highlight field, show error label |
+
+---
+
+## ♿ Accessibility & Focus Flow
+
+### On Submit Trigger
+- **Aria State updates**:
+  - Add `aria-invalid="true"` to any form inputs containing an error.
+  - Dynamically set the invalid input's `aria-describedby` attribute to link to the unique ID of the corresponding error message label (e.g. `aria-describedby="err-input-email"`).
+- **Focus Order**:
+  - On submit response error, focus must be programmatically moved to the *first* field containing an error (e.g., `document.getElementById('input-email').focus()`).
+- **Screen Reader Announcements**:
+  - Wrap general form-level error alerts in an `aria-live="assertive"` region or role `alert`.
+
+---
+
+## 🎨 Visual Indicator Design
+
+- **Border State**:
+  - Focus Ring: change to red/danger outline color (e.g. `#DC2626`).
+  - Input border: red border on error state.
+- **Error Label**:
+  - Place error messages directly below the corresponding input box.
+  - Text style: red, base font size (e.g., `12px` / `0.75rem`), with a helper warning icon next to the text.
+- **Success State**:
+  - Clear errors instantly as the user types/updates the invalid field, resetting the input border to the default theme color.

@@ -88,9 +88,9 @@
     },
     {
       "id": "systemdesign-002",
-      "prompt": "Design a relational database schema for user profiles with UUID as PK",
+      "prompt": "Design a relational database schema context in a system design doc for user profiles with UUID as PK",
       "expected_skill": "system-design",
-      "expected_keywords_hit": ["database schema"],
+      "expected_keywords_hit": ["design doc"],
       "expected_references": ["references/database-schema-design.md"]
     },
     {
@@ -204,6 +204,62 @@
       "expected_skill": "rust",
       "expected_keywords_hit": ["borrow checker", "lifetime"],
       "expected_references": ["references/language-standards.md"]
+    },
+    {
+      "id": "backend-001",
+      "prompt": "Build an API contract and set up fullstack type safety with OpenAPI code-gen",
+      "expected_skill": "backend",
+      "expected_keywords_hit": ["api contract", "fullstack"],
+      "expected_references": ["references/api-contracts-types.md", "templates/api-contract.md.template"]
+    },
+    {
+      "id": "backend-002",
+      "prompt": "Set up backend integration for error handling, mapping server-side validation to form inputs",
+      "expected_skill": "backend",
+      "expected_keywords_hit": ["backend integration"],
+      "expected_references": ["references/error-handling-forms.md", "templates/error-map-spec.md.template"]
+    },
+    {
+      "id": "backend-003",
+      "prompt": "Implement backend-frontend state sync with cached data fetching API connection",
+      "expected_skill": "backend",
+      "expected_keywords_hit": ["api connection", "backend-frontend", "data fetching", "state sync"],
+      "expected_references": ["references/state-sync-caching.md"]
+    },
+    {
+      "id": "backend-004",
+      "prompt": "Synchronize fullstack authentication state and set up secure silent JWT refresh cookies with api connection",
+      "expected_skill": "backend",
+      "expected_keywords_hit": ["api connection", "fullstack"],
+      "expected_references": ["references/auth-session.md"]
+    },
+    {
+      "id": "database-001",
+      "prompt": "Optimize this relational database schema using normalization and indexing",
+      "expected_skill": "database",
+      "expected_keywords_hit": ["database schema", "indexing", "normalization"],
+      "expected_references": ["references/schema-design-normalization.md"]
+    },
+    {
+      "id": "database-002",
+      "prompt": "Audit this slow SELECT query using explain analyze and write a query optimization action plan",
+      "expected_skill": "database",
+      "expected_keywords_hit": ["query optimization"],
+      "expected_references": ["references/indexing-query-tuning.md", "templates/query-optimization-report.md.template"]
+    },
+    {
+      "id": "database-003",
+      "prompt": "Write a zero-downtime migration and database migration script for adding a new table concurrently",
+      "expected_skill": "database",
+      "expected_keywords_hit": ["database migration", "zero-downtime migration"],
+      "expected_references": ["references/migrations-versioning.md", "templates/migration-script.sql.template"]
+    },
+    {
+      "id": "database-004",
+      "prompt": "Enforce strict ACID transactions and choose the correct transaction isolation levels for concurrent writes",
+      "expected_skill": "database",
+      "expected_keywords_hit": ["transaction isolation"],
+      "expected_references": ["references/transactions-concurrency.md"]
     },
     {
       "id": "negative-001",

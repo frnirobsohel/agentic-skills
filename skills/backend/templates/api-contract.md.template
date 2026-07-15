@@ -1,0 +1,101 @@
+# API Contract Specification: [Endpoint Title]
+
+This document details the interface contract, payload structures, HTTP status codes, and validation rules for **[Endpoint Title]**.
+
+---
+
+## 🚀 Endpoint Overview
+
+| Property | Value |
+| :--- | :--- |
+| **HTTP Method** | `[GET / POST / PUT / DELETE]` |
+| **Route Path** | `/api/[version]/[resource]` |
+| **Authentication** | `[None / Bearer JWT / Cookie Session]` |
+| **Required Roles** | `[e.g., Guest / User / Admin]` |
+| **Rate Limit** | `[e.g., 60 requests/min]` |
+
+---
+
+## 📥 Request Definition
+
+### Path Parameters
+`[Delete this section if none]`
+- `[param_name]` (`[type]`): [Description. e.g. "uuid - Target record identifier"]
+
+### Query Parameters
+`[Delete this section if none]`
+- `[param_name]` (`[type]`, `[required/optional]`): [Description. e.g. "integer, optional - page number"]
+
+### Request Headers
+- `Content-Type: application/json`
+- `[Header-Name]: [Value]`
+
+### Request Body Schema (JSON)
+`[Delete this section if GET/DELETE]`
+```json
+{
+  "field_name": "value",
+  "nested_object": {
+    "nested_field": "value"
+  }
+}
+```
+
+---
+
+## 📤 Response Definition
+
+### Success Response (200 OK / 201 Created)
+- **Headers:** `Content-Type: application/json`
+- **Body Envelope:**
+```json
+{
+  "data": {
+    "id": "res_12345",
+    "updated_at": "2026-07-15T00:00:00Z"
+  }
+}
+```
+
+### Error Responses
+
+#### 400 Bad Request / 422 Unprocessable Entity (Validation Error)
+Following the **RFC 7807 (Problem Details)** standard:
+- **Headers:** `Content-Type: application/problem+json`
+- **Body:**
+```json
+{
+  "type": "https://api.example.com/errors/validation-failed",
+  "title": "Validation Failed",
+  "status": 422,
+  "detail": "One or more fields failed validation requirements.",
+  "instance": "/api/[version]/[resource]",
+  "errors": {
+    "field_name": [
+      {
+        "code": "invalid_format",
+        "message": "The field format is invalid."
+      }
+    ]
+  }
+}
+```
+
+#### 401 Unauthorized
+- **Body:**
+```json
+{
+  "type": "https://api.example.com/errors/unauthorized",
+  "title": "Unauthorized",
+  "status": 401,
+  "detail": "Invalid or expired authentication credentials."
+}
+```
+
+---
+
+## ⚙️ Server-Side Validation Rules
+
+| Field Name | Type | Constraints / Validators | Default Value |
+| :--- | :--- | :--- | :--- |
+| `field_name` | `string` | Required, unique, min length 3, max length 50 | - |

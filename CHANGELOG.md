@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ### Added
+- Automated Code Snippet Syntax/Brackets Validator (`scripts/validate_code_snippets.js`) to parse all documentation and templates to catch syntactic errors or unmatched braces in code blocks.
+- Automated Quality Evaluation Runner (`scripts/run_quality_eval.js`) using the Gemini API as an objective judge to verify code quality improvements between baseline and playbook-guided outputs.
+- **Database Production Playbook** (`skills/database/`) including relational schema design, 3NF normalization, performance indexing (B-tree/composite/GIN), EXPLAIN query analysis, zero-downtime expand-and-contract migrations, and ACID transaction isolation tiers.
+- **Backend & Fullstack Integration Playbook** (`skills/backend/`) including guidelines on API contract design, type sharing (OpenAPI/GraphQL/tRPC), RFC 7807 error-handling, state-syncing (TanStack Query/SWR), optimistic updates, and authentication session synchronization.
 - **Rust & Systems Production Playbook** (`skills/rust/`) including formatting guidelines (`rustfmt`/`clippy`), ownership and borrowing rules, async/concurrency standards (Tokio runtime), and an Axum endpoint template.
 - **DevOps & CI/CD Playbook** (`skills/devops/`) including Docker optimization principles (multi-stage, non-root user), CI/CD pipeline automation standards (GitHub Actions), environment configurations, and a GitHub Actions workflow template.
 - **Go & Concurrency Production Playbook** (`skills/go/`) including standard coding standards (`gofmt`), explicit error handling guidelines, concurrency primitives guides, and a Gin framework handler template.
